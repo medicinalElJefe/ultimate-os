@@ -1,0 +1,39 @@
+Hyper-Helical Sphere Mathematics Specification
+
+1. TEMPORAL-SPATIAL INTERFACE
+   - Helical transformation maps linear time to spiral space-time
+   - Pitch parameter: p = φ (golden ratio)
+   - Radius: r(t) = r₀ · e^(t/φ)
+   - Angular frequency: ω = 2π·f/1000 where f is frequency in Hz
+
+2. SPHERICAL HARMONICS
+   - Y(θ,φ) = Associated Legendre polynomials
+   - Used for wave propagation on spherical surfaces
+   - Applications: Antenna patterns, field distributions
+
+3. INTERFERENCE MANAGEMENT
+   - Constructive: A + B (phase aligned)
+   - Destructive: A - B (phase opposed)
+   - Coherence: |⟨A,B⟩| / (||A||·||B||)
+   - Phase difference: Δφ = arg(∑A·B*)
+
+4. FIBONACCI SPHERE DISTRIBUTION
+   - Golden angle: α = π(3 - √5) ≈ 137.508°
+   - Uniform point distribution on sphere
+   - Optimal for isotropic coverage
+
+5. TOROIDAL GEOMETRY
+   - Major radius: R = 2.0
+   - Minor radius: r = 1.0  
+   - Applications: Energy flow, vortex mathematics
+
+6. VORTEX MATHEMATICS
+   - Tangential velocity: v = k·r/|r|²
+   - Spiral energy: E = L/φ where L is spiral arc length
+   - Applications: Energy optimization, flow dynamics
+
+7. CURVATURE CALCULATIONS
+   - Discrete curvature: κ = ||a|| / ||v||²
+   - a = acceleration (2nd derivative)
+   - v = velocity (1st derivative)
+   - Applications: Path optimization, smoothness metrics

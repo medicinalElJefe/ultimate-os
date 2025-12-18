@@ -1,0 +1,37 @@
+Genesis Engine Logic Specification
+
+RECURSIVE DOMAIN PROPAGATION:
+1. Initialize genesis point with energy E₀ and coherence C₀ = 1.0
+2. For each recursion level d:
+   - Create n child domains where n = min(d, 3)
+   - Each child inherits properties from parent
+   - Properties diminish with distance: P(d) = P₀ · (1 - d·0.1)
+
+FRICTION OPTIMIZATION:
+- Base friction: f₀ = 1 / (1 + level)
+- Optimized friction: f_opt = f₀ / φ
+- Goal: Minimize resistance in state transitions
+- Result: Smoother energy flow, higher efficiency
+
+DOMAIN PROPERTIES:
+- Energy: E ∈ [0, ∞), represents available computational resources
+- Coherence: C ∈ [0, 1], represents internal alignment
+- Stability: S ∈ [0, 1], inversely proportional to depth
+- Frequency: f ∈ ℝ⁺, vibrational signature
+
+MERGING ALGORITHM:
+1. Extract properties from domain A and domain B
+2. Average all numerical properties: P_merged = (P_A + P_B) / 2
+3. Bonus: Coherence increases by 20% due to integration
+4. Result: Unified domain with enhanced capabilities
+
+EVOLUTION PROCESS:
+- Generations: Multiple cycles of refinement
+- Improvement rate: α = 0.05 per generation
+- Update rule: P(n+1) = P(n) + α·(P_target - P(n))
+- Fitness: F = C · S (coherence × stability)
+
+PROPAGATION HISTORY:
+- Track all domain creations
+- Record timestamps and depths
+- Enable temporal analysis and optimization

@@ -4,6 +4,7 @@ Integrates all modules into a cohesive operating system
 """
 
 import numpy as np
+import logging
 from typing import Dict, Any, List, Optional
 from .modules import (
     GeometryModule,
@@ -15,6 +16,8 @@ from .modules import (
     StateMatrixHandler,
     FrequencyProtocol
 )
+
+logger = logging.getLogger(__name__)
 
 
 class UltimateOS:
@@ -44,11 +47,11 @@ class UltimateOS:
             'geometry_mode': 'tetrahedron'
         }
         
-        print("Ultimate OS initialized successfully")
+        logger.info("Ultimate OS initialized successfully")
     
     def boot(self) -> Dict[str, Any]:
         """Boot the operating system"""
-        print("Booting Ultimate OS...")
+        logger.info("Booting Ultimate OS...")
         
         # Initialize geometric framework
         self.geometry.initialize_tetrahedron()
@@ -65,7 +68,7 @@ class UltimateOS:
         )
         self.system_state['coherence_level'] = coherence
         
-        print(f"Boot complete. System coherence: {coherence:.4f}")
+        logger.info(f"Boot complete. System coherence: {coherence:.4f}")
         return self.system_state
     
     def process_task(self, task: Dict[str, Any]) -> Dict[str, Any]:
@@ -210,6 +213,6 @@ class UltimateOS:
     
     def shutdown(self):
         """Gracefully shutdown the operating system"""
-        print("Shutting down Ultimate OS...")
+        logger.info("Shutting down Ultimate OS...")
         self.state_matrix.save_state()
-        print("Shutdown complete")
+        logger.info("Shutdown complete")

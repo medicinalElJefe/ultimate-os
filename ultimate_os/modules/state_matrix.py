@@ -4,8 +4,13 @@ Implements perception-emotion-intention mapping and state management
 """
 
 import numpy as np
+import tempfile
+import logging
+import os
 from typing import Dict, Any, List, Optional
 import json
+
+logger = logging.getLogger(__name__)
 
 
 class StateMatrixHandler:
@@ -267,13 +272,16 @@ class StateMatrixHandler:
             'transition_matrix': self.transition_matrix.tolist() if self.transition_matrix is not None else None
         }
     
-    def save_state(self, filepath: str = '/tmp/state_matrix.json'):
+    def save_state(self, filepath: Optional[str] = None):
         """
         Save state to file
         
         Args:
-            filepath: Path to save state
+            filepath: Path to save state (defaults to temp directory)
         """
+        if filepath is None:
+            filepath = os.path.join(tempfile.gettempdir(), 'ultimate_os_state_matrix.json')
+        
         snapshot = self.create_state_snapshot()
         
         # Convert numpy arrays to lists for JSON serialization
@@ -281,17 +289,20 @@ class StateMatrixHandler:
             with open(filepath, 'w') as f:
                 json.dump(snapshot, f, indent=2)
             return True
-        except Exception as e:
-            print(f"Error saving state: {e}")
+        except (IOError, PermissionError, OSError) as e:
+            logger.error(f"Error saving state to {filepath}: {e}")
             return False
     
-    def load_state(self, filepath: str = '/tmp/state_matrix.json'):
+    def load_state(self, filepath: Optional[str] = None):
         """
         Load state from file
         
         Args:
-            filepath: Path to load state from
+            filepath: Path to load state from (defaults to temp directory)
         """
+        if filepath is None:
+            filepath = os.path.join(tempfile.gettempdir(), 'ultimate_os_state_matrix.json')
+        
         try:
             with open(filepath, 'r') as f:
                 snapshot = json.load(f)
@@ -301,8 +312,8 @@ class StateMatrixHandler:
                 self.transition_matrix = np.array(snapshot['transition_matrix'])
             
             return True
-        except Exception as e:
-            print(f"Error loading state: {e}")
+        except (IOError, PermissionError, OSError, FileNotFoundError) as e:
+            logger.error(f"Error loading state from {filepath}: {e}")
             return False
     
     def analyze_state_trajectory(self, window: int = 10) -> Dict[str, Any]:

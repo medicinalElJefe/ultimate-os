@@ -36,7 +36,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'ultimate-os=main:main',
+            'ultimate-os=ultimate_os.main:main',
         ],
     },
 )

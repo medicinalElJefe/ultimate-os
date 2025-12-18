@@ -17,7 +17,10 @@ An advanced operating system integrating:
 pip install -r requirements.txt
 
 # Run the main demonstration
-python main.py
+python run_ultimate_os.py
+
+# Or run as module
+python -m ultimate_os.main
 
 # Run examples
 python examples/example_basic.py
